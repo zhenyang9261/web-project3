@@ -1,11 +1,10 @@
 import React, { Component } from "react";
-import DeleteBtn from "../components/DeleteBtn";
 import Jumbotron from "../components/Jumbotron";
 import API from "../utils/API";
 import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
 import { List, ListItem } from "../components/List";
-import { Input, TextArea, FormBtn } from "../components/Form";
+import Nav from "../components/Nav";
 
 class Home extends Component {
   state = {
@@ -30,6 +29,21 @@ class Home extends Component {
   render() {
     return (
       <Container fluid>
+        <Nav>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item active">
+                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Login</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Signup</a>
+              </li>
+            </ul>
+          </div>
+        </Nav>
         <Row>
           <Col size="md-12 sm-12">
             <Jumbotron>

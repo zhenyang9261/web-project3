@@ -57,7 +57,8 @@ class Home extends Component {
                       <strong>
                         {journal.title} 
                       </strong>
-                    
+                      <p>{journal.country} | {journal.city}</p>
+                      <p>{journal.note}</p>
                   </ListItem>
                 ))}
               </List>

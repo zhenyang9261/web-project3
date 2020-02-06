@@ -13,6 +13,16 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
+  findByCountry: function(req, res) {
+    db.Journal.find({country: req.params.country})
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  },
+  findByRating: function(req, res) {
+    db.Journal.find({rating: req.params.rating})
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  },
   create: function(req, res) {
     db.Journal.create(req.body)
       .then(dbModel => res.json(dbModel))

@@ -16,5 +16,9 @@ export default {
   // Saves a Journal to the database
   saveJournal: function(JournalData) {
     return axios.post("/api/Journals", JournalData);
-  }
+  },
+    // Saves a Journal to the database
+    saveUser: function(UserData) {
+      return axios.post("/api/user", UserData);
+    }
 };

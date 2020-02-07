@@ -2,6 +2,9 @@ const express = require("express");
 
 const mongoose = require("mongoose");
 const routes = require("./routes");
+const session = require('express-session');
+const MongoStore = require('connect-mongo')(session)
+const passport = require('./passport');
 const app = express();
 const PORT = process.env.PORT || 3001;
 
@@ -19,6 +22,21 @@ app.use(routes);
 mongoose.connect(
   process.env.MONGODB_URI || "mongodb://localhost/traveljournals"
 );
+
+// Sessions
+app.use(
+	session({
+		secret: 'fraggle-rock', //pick a random string to make the hash that is generated secure
+		// store: new MongoStore({ mongooseConnection: dbConnection }),
+		resave: false, //required
+		saveUninitialized: false //required
+	})
+)
+
+// Passport
+app.use(passport.initialize())
+app.use(passport.session()) // calls the deserializeUser
+
 
 // Start the API server
 app.listen(PORT, function() {

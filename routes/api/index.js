@@ -1,7 +1,11 @@
 const router = require("express").Router();
 const journalRoutes = require("./journal");
+const userRoutes = require("./user");
 
-// Book routes
-router.use("/journal", journalRoutes);
+// Journal routes
+router.use("/journals", journalRoutes);
+
+// Login routes
+router.use("/user", userRoutes);
 
 module.exports = router;

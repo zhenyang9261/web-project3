@@ -1,28 +1,33 @@
 import React, { Component } from "react";
-import DeleteBtn from "../components/DeleteBtn";
+// import DeleteBtn from "../components/DeleteBtn";
 import Jumbotron from "../components/Jumbotron";
 import API from "../utils/API";
 import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
 import { List, ListItem } from "../components/List";
-import { Input, TextArea, FormBtn } from "../components/Form";
+// import { Input, TextArea, FormBtn } from "../components/Form";
 
 class Home extends Component {
   state = {
-    books: [],
-    title: "",
-    author: "",
-    synopsis: ""
+    journals: [],
+    // title: "",
+    // author: "",
+    // synopsis: ""
   };
 
   componentDidMount() {
-    this.loadBooks();
+    this.loadJournals();
   }
 
-  loadBooks = () => {
-    API.getBooks()
-      .then(res =>
-        this.setState({ books: res.data, title: "", author: "", synopsis: "" })
+  loadJournals = () => {
+    API.getJournals()
+      .then(res => {
+        console.log("res.data");
+        this.setState({ journals: res.data })
+        // use below syntax when adding more elements
+        // this.setState({ books: res.data, title: "", author: "", synopsis: "" })
+      }
+
       )
       .catch(err => console.log(err));
   };
@@ -57,7 +62,7 @@ class Home extends Component {
     return (
       <Container fluid>
         <Row>
-          <Col size="md-6">
+          {/* <Col size="md-6">
             <Jumbotron>
               <h1>What Books Should I Read?</h1>
             </Jumbotron>
@@ -88,20 +93,22 @@ class Home extends Component {
               </FormBtn>
             </form>
           </Col>
-          <Col size="md-6 sm-12">
+          <Col size="md-6 sm-12"> */}
+          <Col size="md-12 sm-12">
             <Jumbotron>
-              <h1>Books On My List</h1>
+            <h1>All Journals</h1>
+              {/* <h1>Books On My List</h1> */}
             </Jumbotron>
-            {this.state.books.length ? (
+            {this.state.journals.length ? (
               <List>
-                {this.state.books.map(book => (
-                  <ListItem key={book._id}>
-                    <Link to={"/books/" + book._id}>
+                {this.state.journals.map(journal => (
+                  <ListItem key={journal._id}>
+                    <Link to={"/journals/" + journal._id}>
                       <strong>
-                        {book.title} by {book.author}
+                        {journal.title} 
                       </strong>
                     </Link>
-                    <DeleteBtn onClick={() => this.deleteBook(book._id)} />
+                    {/* <DeleteBtn onClick={() => this.deleteBook(book._id)} /> */}
                   </ListItem>
                 ))}
               </List>

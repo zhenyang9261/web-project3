@@ -2,6 +2,8 @@ import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Home from "./pages/Home";
 import PersonalJournal from "./pages/PersonalJournal";
+import LoginForm from './components/Login'
+import Signup from './components/Signup'
 import NoMatch from "./pages/NoMatch";
 import Nav from "./components/Nav";
 
@@ -13,6 +15,8 @@ function App() {
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/Home" component={Home} />
+          <Route exact path="/Login" component={LoginForm} />
+          <Route exact path="/Signup" component={Signup} />
           <Route exact path="/PersonalJournal" component={PersonalJournal} />
           <Route component={NoMatch} />
         </Switch>

@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const journalController = require("../../controllers/journalController");
+const userController = require("../../controllers/userController");
 
 // Matches with "/api/books"
 router
@@ -14,7 +15,6 @@ router
   .put(journalController.update)
   .delete(journalController.remove);
 
-
 // Matches with "/api/journals/country/:country"
 router
   .route("/country/:country")
@@ -22,7 +22,12 @@ router
 
 // Matches with "/api/journals/rating/:rating"
 router
-.route("/rating/:rating")
-.get(journalController.findByRating);
+  .route("/rating/:rating")
+  .get(journalController.findByRating);
+
+// Matches with "/api/journals/user/:id"
+router
+  .route("/user/:id")
+  .get(userController.findById);
 
 module.exports = router;

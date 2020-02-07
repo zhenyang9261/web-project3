@@ -13,6 +13,10 @@ export default {
   deleteJournal: function(id) {
     return axios.delete("/api/journals/" + id);
   },
+  // Update the Journal with the given id
+  updateJournal: function(id) {
+    return axios.put("/api/journals/" + id);
+  },
   // Saves a Journal to the database
   saveJournal: function(JournalData) {
     return axios.post("/api/journals", JournalData);
@@ -22,5 +26,9 @@ export default {
   },
   getJournalRating: function(rating) {
     return axios.get("/api/journals/rating/" + rating);
-  }
+  },
+  // Gets the Journal of the user with the given user id
+  getUserJournal: function(id) {
+    return axios.get("/api/journals/user/" + id);
+  },
 };

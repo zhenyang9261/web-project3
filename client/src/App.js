@@ -5,13 +5,12 @@ import PersonalJournal from "./pages/PersonalJournal";
 import LoginForm from './components/Login'
 import Signup from './components/Signup'
 import NoMatch from "./pages/NoMatch";
-import Nav from "./components/Nav";
 
 function App() {
   return (
     <Router>
       <div>
-        <Nav />
+        {/* <Nav /> */}
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/Home" component={Home} />

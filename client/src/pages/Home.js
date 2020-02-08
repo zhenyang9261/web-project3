@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import Jumbotron from "../components/Jumbotron";
 import API from "../utils/API";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
 import { List, ListItem } from "../components/List";
 import Nav from "../components/Nav";
+import Dropdown from "../components/Dropdown";
 
 class Home extends Component {
   state = {
@@ -26,20 +27,33 @@ class Home extends Component {
       .catch(err => console.log(err));
   };
 
+  rateSelected = (rate) => {
+    rate == 0 ? 
+    this.loadJournals() :
+    API.getJournalRating(rate)
+      .then(res => {
+        console.log("res.data");
+     
+        this.setState({ journals: res.data })
+      }
+      )
+      .catch(err => console.log(err));
+  };
+
   render() {
     return (
       <Container fluid>
         <Nav>
-          <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ml-auto">
-              <li class="nav-item active">
-                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+          <div className="collapse navbar-collapse" id="navbarNav">
+            <ul className="navbar-nav ml-auto">
+              <li className="nav-item active">
+                <a className="nav-link" href="#">Home <span className="sr-only">(current)</span></a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Login</a>
+              <li className="nav-item">
+                <a className="nav-link" href="#">Login</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Signup</a>
+              <li className="nav-item">
+                <a className="nav-link" href="#">Signup</a>
               </li>
             </ul>
           </div>
@@ -49,15 +63,17 @@ class Home extends Component {
             <Jumbotron>
               <h1>All Journals</h1>
             </Jumbotron>
+            <Dropdown rateSelected={this.rateSelected} />
             {this.state.journals.length ? (
               <List>
                 {this.state.journals.map(journal => (
                   <ListItem key={journal._id}>
                    
                       <strong>
-                        {journal.title} 
+                        <h2>{journal.title}</h2> 
                       </strong>
                       <p>{journal.country} | {journal.city}</p>
+                      <p><strong>Rating: </strong>{journal.rating}</p>
                       <p>{journal.note}</p>
                   </ListItem>
                 ))}

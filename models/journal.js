@@ -9,6 +9,7 @@ const journalSchema = new Schema({
   rating: { type: Number },
   picUrl: { type: String },
   publish: { type: Boolean, required: true },
+  note: {type: String},
   createdAt: { type: Date, default: Date.now }
 });
 

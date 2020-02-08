@@ -3,13 +3,24 @@ const db = require("../models");
 // Defining methods for the JournalsController
 module.exports = {
   findAll: function(req, res) {
-    db.Journal.find(req.query)
+    //db.Journal.find(req.query)
+    db.Journal.find({publish: true})
       .sort({ date: -1 })
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
   findById: function(req, res) {
     db.Journal.findById(req.params.id)
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  },
+  findByCountry: function(req, res) {
+    db.Journal.find({country: req.params.country})
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  },
+  findByRating: function(req, res) {
+    db.Journal.find({rating: req.params.rating, publish: true})
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },

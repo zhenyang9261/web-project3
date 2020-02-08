@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
 import axios from 'axios'
+import Nav from "../Nav";
+import { Container } from "../Grid";
 
 class LoginForm extends Component {
     constructor() {
@@ -12,7 +14,31 @@ class LoginForm extends Component {
         }
         this.handleSubmit = this.handleSubmit.bind(this)
         this.handleChange = this.handleChange.bind(this)
+        this.getUser = this.getUser.bind(this)
+    }
 
+    updateUser(userObject) {
+        this.setState(userObject)
+    }
+    getUser() {
+        axios.get('/user/').then(response => {
+            console.log('Get user response: ')
+            console.log(response.data)
+            if (response.data.user) {
+                console.log('Get User: There is a user saved in the server session: ')
+
+                this.setState({
+                    loggedIn: true,
+                    username: response.data.user.username
+                })
+            } else {
+                console.log('Get user: no user');
+                this.setState({
+                    loggedIn: false,
+                    username: null
+                })
+            }
+        })
     }
 
     handleChange(event) {
@@ -57,46 +83,63 @@ class LoginForm extends Component {
         } else {
             return (
                 <div>
-                    <h4>Login</h4>
-                    <form className="form-horizontal">
-                        <div className="form-group">
-                            <div className="col-1 col-ml-auto">
-                                <label className="form-label" htmlFor="username">Username</label>
+                    <Container fluid>
+                        <Nav>
+                            <div className="collapse navbar-collapse" id="navbarNav">
+                                <ul className="navbar-nav ml-auto">
+                                    <li className="nav-item active">
+                                        <a className="nav-link" href="/">Home <span className="sr-only">(current)</span></a>
+                                    </li>
+                                    <li className="nav-item">
+                                        <a className="nav-link" href="#">Login</a>
+                                    </li>
+                                    <li className="nav-item">
+                                        <a className="nav-link" href="/Signup">Signup</a>
+                                    </li>
+                                </ul>
                             </div>
-                            <div className="col-3 col-mr-auto">
-                                <input className="form-input"
-                                    type="text"
-                                    id="username"
-                                    name="username"
-                                    placeholder="Username"
-                                    value={this.state.username}
-                                    onChange={this.handleChange}
-                                />
+                        </Nav>
+                        <h4>Login</h4>
+                        <form className="form-horizontal">
+                            <div className="form-group">
+                                <div className="col-1 col-ml-auto">
+                                    <label className="form-label" htmlFor="username">Username</label>
+                                </div>
+                                <div className="col-3 col-mr-auto">
+                                    <input className="form-input"
+                                        type="text"
+                                        id="username"
+                                        name="username"
+                                        placeholder="Username"
+                                        value={this.state.username}
+                                        onChange={this.handleChange}
+                                    />
+                                </div>
                             </div>
-                        </div>
-                        <div className="form-group">
-                            <div className="col-1 col-ml-auto">
-                                <label className="form-label" htmlFor="password">Password: </label>
+                            <div className="form-group">
+                                <div className="col-1 col-ml-auto">
+                                    <label className="form-label" htmlFor="password">Password: </label>
+                                </div>
+                                <div className="col-3 col-mr-auto">
+                                    <input className="form-input"
+                                        placeholder="password"
+                                        type="password"
+                                        name="password"
+                                        value={this.state.password}
+                                        onChange={this.handleChange}
+                                    />
+                                </div>
                             </div>
-                            <div className="col-3 col-mr-auto">
-                                <input className="form-input"
-                                    placeholder="password"
-                                    type="password"
-                                    name="password"
-                                    value={this.state.password}
-                                    onChange={this.handleChange}
-                                />
-                            </div>
-                        </div>
-                        <div className="form-group ">
-                            <div className="col-7"></div>
-                            <button
-                                className="btn btn-primary col-1 col-mr-auto"
+                            <div className="form-group ">
+                                <div className="col-7"></div>
+                                <button
+                                    className="btn btn-primary col-1 col-mr-auto"
 
-                                onClick={this.handleSubmit}
-                                type="submit">Login</button>
-                        </div>
-                    </form>
+                                    onClick={this.handleSubmit}
+                                    type="submit">Login</button>
+                            </div>
+                        </form>
+                    </Container >
                 </div>
             )
         }

@@ -40,11 +40,14 @@ router.post(
     },
     passport.authenticate('local'),
     (req, res) => {
-        console.log('logged in', req.user);
+        console.log('logged in', req.user._id);
         var userInfo = {
-            username: req.user.username
+            username: req.user.username,
+            userid: req.user._id
         };
         res.send(userInfo);
+        // console.log(userInfo);
+        // res.render("/PersonalJournal");
     }
 )
 
@@ -52,7 +55,8 @@ router.get('/', (req, res, next) => {
     console.log('===== user!!======')
     console.log(req.user)
     if (req.user) {
-        res.json({ user: req.user })
+        res.json({ user: req.user });
+        res.render("/PersonalJournal/");
     } else {
         res.json({ user: null })
     }

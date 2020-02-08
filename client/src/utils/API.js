@@ -28,7 +28,7 @@ export default {
     return axios.get("/api/journals/rating/" + rating);
   },
   // Gets the Journal of the user with the given user id
-  getUserJournal: function(id) {
+  getUserJournals: function(id) {
     return axios.get("/api/journals/user/" + id);
   },
 };

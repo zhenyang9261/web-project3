@@ -29,6 +29,7 @@ export default {
   },
   // Gets the Journal of the user with the given user id
   getUserJournals: function (id) {
+    console.log("API calls id:" + id);
     return axios.get("/api/journals/user/" + id);
   },
 };

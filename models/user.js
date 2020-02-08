@@ -4,14 +4,14 @@ const bcrypt = require('bcryptjs');
 mongoose.promise = Promise
 
 const userSchema = new Schema({
-  username: { type: String, required: true },
-  password: { type: String, required: true },
-  // journal: [
-  //   {
-  //     type: Schema.Types.ObjectId,
-  //     ref: "Journal"
-  //   }
-  // ]
+	username: { type: String, required: true },
+	password: { type: String, required: true },
+	journal: [
+		{
+			type: Schema.Types.ObjectId,
+			ref: "Journal"
+		}
+	]
 });
 
 // Define schema methods
@@ -31,7 +31,7 @@ userSchema.pre('save', function (next) {
 		next()
 	} else {
 		console.log('models/user.js hashPassword in pre save');
-		
+
 		this.password = this.hashPassword(this.password)
 		next()
 	}

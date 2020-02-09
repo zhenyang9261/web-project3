@@ -48,7 +48,7 @@ class CreateJournal extends Component {
     event.preventDefault();
 
     console.log("Input: " + this.state.title + " " + this.state.country + " " + this.state.city + " " + this.state.date + " " + this.state.rating + " " + this.state.publish);
-    if (this.state.title && this.state.date && this.state.city && this.state.date && this.state.publish ) {
+    if (this.state.title && this.state.date && this.state.city && this.state.date) {
       API.saveJournal({
         title: this.state.title,
         country: this.state.country,

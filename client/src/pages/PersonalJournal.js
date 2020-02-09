@@ -8,14 +8,15 @@ import API from "../utils/API";
 
 class PersonalJournal extends Component {
   state = {
-    journals: []
+    journals: [],
+    userId: ""
   };
   // When this component mounts, grab the journals with the _id of this.props.match.params.id
   // e.g. localhost:3000/PersonalJournals/599dcb67f0f16317844583fc
   componentDidMount() {
-    
+    this.state.userId = this.props.match.params.id;
     API.getUserJournals(this.props.match.params.id)
-    .then(res => {this.setState({ journals: res.data.journal }); })
+    .then(res => {this.setState({ journals: res.data.journal}); })
     .catch(err => console.log(err));
   }
 
@@ -30,10 +31,10 @@ class PersonalJournal extends Component {
                 <a className="nav-link" href="#">Home <span className="sr-only">(current)</span></a>
               </li> */}
               <li className="nav-item">
-                <a className="nav-link" href="#">Create New Journal</a>
+                <a className="nav-link" href="/CreateJournal/{this.state.userId}">Create New Journal</a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#">Logout</a>
+                <a className="nav-link" href="/">Logout</a>
               </li>
             </ul>
           </div>

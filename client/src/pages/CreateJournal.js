@@ -5,6 +5,7 @@ import Nav from "../components/Nav";
 import { Input, TextArea, FormBtn } from "../components/Form";
 import API from "../utils/API";
 import { Redirect } from 'react-router-dom';
+import { withRouter } from 'react-router';
 
 class CreateJournal extends Component {
   state = {
@@ -25,10 +26,7 @@ class CreateJournal extends Component {
   componentDidMount() {
       
     this.state.userId = this.props.match.params.id;
-    console.log(this.state.userId);
-    // API.getUserJournals(this.props.match.params.id)
-    // .then(res => {this.setState({ journals: res.data.journal}); })
-    // .catch(err => console.log(err));
+    
   }
 
   handleInputChange = event => {
@@ -63,15 +61,16 @@ class CreateJournal extends Component {
       })
         //.then(res => this.loadJournals())
         //.then(res => res.render("/PersonalJournal/"+this.state.userId))
-        .then(res => this.state.done = true)
+        .then(res => this.setState({ done: true }))
         .catch(err => console.log(err));
     }
   };
 
   render() {
-    const {isDone} = this.props;
-    if (isDone) {
-      return <Redirect to="/PersonalJournal/{this.state.userId}" />;
+    //const {isDone} = this.props;
+    if (this.state.done === true) {
+      let newPage = "/PersonalJournal/" + this.state.userId;
+      return <Redirect to={newPage} />;
     }
     return (
       <Container fluid>
@@ -146,7 +145,7 @@ class CreateJournal extends Component {
                 placeholder="Note (Optional)"
               />
               <FormBtn
-                disabled={!(this.state.title && this.state.date && this.state.country && this.state.city && this.state.publish)}
+                disabled={!(this.state.title && this.state.date && this.state.country && this.state.city)}
                 onClick={this.handleFormSubmit}
               >
                 Submit Journal

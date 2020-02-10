@@ -5,7 +5,6 @@ import Nav from "../components/Nav";
 import { Input, TextArea, FormBtn } from "../components/Form";
 import API from "../utils/API";
 import { Redirect } from 'react-router-dom';
-import { withRouter } from 'react-router';
 
 class CreateJournal extends Component {
   state = {
@@ -25,8 +24,7 @@ class CreateJournal extends Component {
   // e.g. localhost:3000/PersonalJournals/599dcb67f0f16317844583fc
   componentDidMount() {
       
-    this.state.userId = this.props.match.params.id;
-    
+    this.setState({ userId: this.props.match.params.id });
   }
 
   handleInputChange = event => {
@@ -59,15 +57,13 @@ class CreateJournal extends Component {
         note: this.state.note,
         userId: this.state.userId
       })
-        //.then(res => this.loadJournals())
-        //.then(res => res.render("/PersonalJournal/"+this.state.userId))
         .then(res => this.setState({ done: true }))
         .catch(err => console.log(err));
     }
   };
 
   render() {
-    //const {isDone} = this.props;
+    
     if (this.state.done === true) {
       let newPage = "/PersonalJournal/" + this.state.userId;
       return <Redirect to={newPage} />;
@@ -131,7 +127,7 @@ class CreateJournal extends Component {
                 name="rating"
                 placeholder="Rating"
               />
-              Publish? 
+              Publish? { "  " }
               <input
                 type="checkbox"
                 defaultChecked={this.state.publish}

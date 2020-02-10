@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
 import Jumbotron from "../components/Jumbotron";
 import Nav from "../components/Nav";
@@ -21,7 +20,8 @@ class PersonalJournal extends Component {
   }
 
   render() {
-    
+    let newJournalLink = "/CreateJournal/"+this.state.userId;
+
     return (
       <Container fluid>
         <Nav>
@@ -31,7 +31,7 @@ class PersonalJournal extends Component {
                 <a className="nav-link" href="#">Home <span className="sr-only">(current)</span></a>
               </li> */}
               <li className="nav-item">
-                <a className="nav-link" href="/CreateJournal/{this.state.userId}">Create New Journal</a>
+                <a className="nav-link" href={newJournalLink}>Create New Journal</a>
               </li>
               <li className="nav-item">
                 <a className="nav-link" href="/">Logout</a>
@@ -59,7 +59,7 @@ class PersonalJournal extends Component {
                       <strong>
                         <h2>{journal.title}</h2> 
                       </strong>
-                      <p>{journal.country} | {journal.city}</p>
+                      <p>{journal.country} | {journal.city} | {journal.date.substring(0, 10)}</p>
                       <p><strong>Rating: </strong>{journal.rating}</p>
                       <p>{journal.note}</p>
                   </ListItem>

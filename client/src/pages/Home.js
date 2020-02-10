@@ -28,7 +28,7 @@ class Home extends Component {
   };
 
   rateSelected = (rate) => {
-    rate == 0 ? 
+    rate === 0 ? 
     this.loadJournals() :
     API.getJournalRating(rate)
       .then(res => {
@@ -47,13 +47,13 @@ class Home extends Component {
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav ml-auto">
               <li className="nav-item active">
-                <a className="nav-link" href="#">Home <span className="sr-only">(current)</span></a>
+                <a className="nav-link" href="/">Home <span className="sr-only">(current)</span></a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#">Login</a>
+                <a className="nav-link" href="/">Login</a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#">Signup</a>
+                <a className="nav-link" href="/">Signup</a>
               </li>
             </ul>
           </div>

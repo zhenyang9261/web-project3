@@ -25,9 +25,22 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   create: function(req, res) {
+    let userId = req.body.userId;
+    
+    delete req.body["userId"];
+
     db.Journal.create(req.body)
-      .then(dbModel => res.json(dbModel))
-      .catch(err => res.status(422).json(err));
+    .then(function(dbJournal) {
+      
+      return db.User.findOneAndUpdate(
+        //{ _id: mongoose.Types.ObjectId(userId) },
+        { _id: userId },
+        { $push: { journal: dbJournal._id } },
+        { new: true }
+      );
+    })
+    .then(dbJournal => res.status(200).end())
+    .catch(err => res.status(422).json(err));
   },
   update: function(req, res) {
     db.Journal.findOneAndUpdate({ _id: req.params.id }, req.body)

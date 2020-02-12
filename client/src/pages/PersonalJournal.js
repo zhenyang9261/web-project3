@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
 import Jumbotron from "../components/Jumbotron";
-import Nav from "../components/Nav";
+// import Nav from "../components/Nav";
 import { List, ListItem } from "../components/List";
 import API from "../utils/API";
 
@@ -13,23 +13,24 @@ class PersonalJournal extends Component {
   // When this component mounts, grab the journals with the _id of this.props.match.params.id
   // e.g. localhost:3000/PersonalJournals/599dcb67f0f16317844583fc
   componentDidMount() {
-    
+    //5e3eebd3e20b91cbf8d218dc
     API.getUserJournals(this.props.match.params.id)
-    .then(res => {this.setState({ journals: res.data.journal }); })
-    .catch(err => console.log(err));
+      .then(res => { this.setState({ journals: res.data.journal }); })
+      .catch(err => console.log("this is the error: " + err));
   }
 
   render() {
-    
+
     return (
       <Container fluid>
-        <Nav>
+
+        {/* <Nav>
           <div className="collapse navbar-collapse" id="navbarNav">
-            <ul className="navbar-nav ml-auto">
-              {/* <li className="nav-item active">
+            <ul className="navbar-nav ml-auto"> */}
+        {/* <li className="nav-item active">
                 <a className="nav-link" href="#">Home <span className="sr-only">(current)</span></a>
               </li> */}
-              <li className="nav-item">
+        {/* <li className="nav-item">
                 <a className="nav-link" href="#">Create New Journal</a>
               </li>
               <li className="nav-item">
@@ -37,7 +38,7 @@ class PersonalJournal extends Component {
               </li>
             </ul>
           </div>
-        </Nav>
+        </Nav> */}
         <Row>
           <Col size="md-12">
             <Jumbotron>
@@ -50,26 +51,26 @@ class PersonalJournal extends Component {
         </Row>
         <Row>
           <Col size="md-12">
-          {this.state.journals.length ? (
+            {this.state.journals.length ? (
               <List>
                 {this.state.journals.map(journal => (
                   <ListItem key={journal._id}>
-                   
-                      <strong>
-                        <h2>{journal.title}</h2> 
-                      </strong>
-                      <p>{journal.country} | {journal.city}</p>
-                      <p><strong>Rating: </strong>{journal.rating}</p>
-                      <p>{journal.note}</p>
+
+                    <strong>
+                      <h2>{journal.title}</h2>
+                    </strong>
+                    <p>{journal.country} | {journal.city}</p>
+                    <p><strong>Rating: </strong>{journal.rating}</p>
+                    <p>{journal.note}</p>
                   </ListItem>
                 ))}
               </List>
             ) : (
-              <h3>No Results to Display</h3>
-            )}
+                <h3>No Results to Display</h3>
+              )}
           </Col>
         </Row>
-        
+
       </Container>
     );
   }

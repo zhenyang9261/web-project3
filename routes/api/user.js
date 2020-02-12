@@ -2,12 +2,14 @@ const express = require('express')
 const router = express.Router()
 const User = require('../../models/user')
 // or should the above go to the controllers folder like journals.js is
+const userController = require("../../controllers/userController");
 const passport = require('passport')
 
 router.post('/', (req, res) => {
-    console.log('user signup');
+    console.log('user signup' + req.body);
 
     const { username, password } = req.body
+    console.log(req.body);
     // ADD VALIDATION
     User.findOne({ username: username }, (err, user) => {
         if (err) {
@@ -46,8 +48,8 @@ router.post(
             userid: req.user._id
         };
         res.send(userInfo);
-        // console.log(userInfo);
-        // res.render("/PersonalJournal");
+        console.log(userInfo);
+        // res.render("/PersonalJournal/" + userInfo.userid);
     }
 )
 
@@ -56,15 +58,17 @@ router.get('/', (req, res, next) => {
     console.log(req.user)
     if (req.user) {
         res.json({ user: req.user });
-        res.render("/PersonalJournal/");
+        res.render("/PersonalJournal/" + userInfo.userid);
     } else {
         res.json({ user: null })
     }
 })
 
 router.post('/logout', (req, res) => {
+    console.log("test here");
     if (req.user) {
         req.logout()
+
         res.send({ msg: 'logging out' })
     } else {
         res.send({ msg: 'no user to log out' })

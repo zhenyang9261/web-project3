@@ -57,7 +57,7 @@ class Signup extends Component {
 			return (
 				<div>
 					<Container fluid>
-						<Nav>
+						{/* <Nav>
 							<div className="collapse navbar-collapse" id="navbarNav">
 								<ul className="navbar-nav ml-auto">
 									<li className="nav-item active">
@@ -71,7 +71,7 @@ class Signup extends Component {
 									</li>
 								</ul>
 							</div>
-						</Nav>
+						</Nav> */}
 						<div className="SignupForm">
 							<h4>Sign up</h4>
 							<form className="form-horizontal">

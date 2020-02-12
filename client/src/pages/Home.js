@@ -5,7 +5,7 @@ import API from "../utils/API";
 // import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
 import { List, ListItem } from "../components/List";
-import Nav from "../components/Nav";
+// import Nav from "../components/Nav";
 import Dropdown from "../components/Dropdown";
 
 class Home extends Component {
@@ -44,7 +44,7 @@ class Home extends Component {
   render() {
     return (
       <Container fluid>
-        <Nav>
+        {/* <Nav>
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav ml-auto">
               <li className="nav-item active">
@@ -58,7 +58,7 @@ class Home extends Component {
               </li>
             </ul>
           </div>
-        </Nav>
+        </Nav> */}
         <Row>
           <Col size="md-12 sm-12">
             <Jumbotron>

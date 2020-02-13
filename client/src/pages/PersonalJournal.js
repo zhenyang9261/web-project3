@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Col, Row, Container } from "../components/Grid";
 import Jumbotron from "../components/Jumbotron";
-import Nav from "../components/Nav";
+// import Nav from "../components/Nav";
 import { List, ListItem } from "../components/List";
 import API from "../utils/API";
 
@@ -24,21 +24,22 @@ class PersonalJournal extends Component {
 
     return (
       <Container fluid>
-        <Nav>
+
+        {/* <Nav>
           <div className="collapse navbar-collapse" id="navbarNav">
-            <ul className="navbar-nav ml-auto">
-              {/* <li className="nav-item active">
+            <ul className="navbar-nav ml-auto"> */}
+        {/* <li className="nav-item active">
                 <a className="nav-link" href="#">Home <span className="sr-only">(current)</span></a>
               </li> */}
-              <li className="nav-item">
-                <a className="nav-link" href={newJournalLink}>Create New Journal</a>
+        {/* <li className="nav-item">
+                <a className="nav-link" href="#">Create New Journal</a>
               </li>
               <li className="nav-item">
                 <a className="nav-link" href="/">Logout</a>
               </li>
             </ul>
           </div>
-        </Nav>
+        </Nav> */}
         <Row>
           <Col size="md-12">
             <Jumbotron>
@@ -51,7 +52,7 @@ class PersonalJournal extends Component {
         </Row>
         <Row>
           <Col size="md-12">
-          {this.state.journals.length ? (
+            {this.state.journals.length ? (
               <List>
                 {this.state.journals.map(journal => (
                   <ListItem key={journal._id}>
@@ -66,11 +67,11 @@ class PersonalJournal extends Component {
                 ))}
               </List>
             ) : (
-              <h3>No Results to Display</h3>
-            )}
+                <h3>No Results to Display</h3>
+              )}
           </Col>
         </Row>
-        
+
       </Container>
     );
   }

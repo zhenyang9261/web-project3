@@ -8,7 +8,9 @@ class Nav extends Component {
   constructor() {
     super()
     this.state = {
-      loggedOut: false
+      loggedOut: false,
+      journals: [],
+      userId: ""
     }
     this.logout = this.logout.bind(this)
   }
@@ -36,9 +38,8 @@ class Nav extends Component {
     const loggedIn = this.props.loggedIn;
     console.log('navbar render, props: ')
     console.log(this.props);
-    // if (this.state.loggedOut) {
-    //   return <Redirect to={{ pathname: '/' }} />
-    // }
+    let newJournalLink = "/CreateJournal/" + this.state.userId;
+    console.log(newJournalLink);
 
     return (
 

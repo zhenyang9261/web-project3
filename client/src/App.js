@@ -29,6 +29,7 @@ class App extends Component {
   }
 
   updateUser(userObject) {
+    console.log("updateUser: " + JSON.stringify(userObject));
     this.setState(userObject)
   }
 
@@ -37,8 +38,8 @@ class App extends Component {
       console.log('Get user response: ')
       console.log(response.data)
       if (response.data.user) {
-        console.log('Get User: There is a user saved in the server session: ')
-
+        console.log('Get User: There is a user saved in the server session: ' + response.data.user._id);
+        
         this.setState({
           loggedIn: true,
           username: response.data.user.username,
@@ -54,6 +55,8 @@ class App extends Component {
     })
   }
   render() {
+    
+    var createJournalLink = '/CreateJournal/' + this.state.id;
     return (
       <Router>
         <div>
@@ -72,7 +75,7 @@ class App extends Component {
             <Route exact path="/Logout" component={Home} />
             <Route exact path="/Signup" component={Signup} />
             <Route exact path="/PersonalJournal/:id" component={PersonalJournal} />
-            <Route exact path="/CreateJournal/:id" component={CreateJournal} />
+            <Route exact path={createJournalLink} component={CreateJournal} />
             <Redirect from="/" to="/Home" />
             <Route component={NoMatch} />
           </Switch>

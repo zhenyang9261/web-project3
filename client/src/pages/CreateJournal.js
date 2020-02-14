@@ -23,7 +23,7 @@ class CreateJournal extends Component {
   // When this component mounts, grab the journals with the _id of this.props.match.params.id
   // e.g. localhost:3000/PersonalJournals/599dcb67f0f16317844583fc
   componentDidMount() {
-      
+      console.log("createjournal userid from url: " + JSON.stringify(this.props.match.params));
     this.setState({ userId: this.props.match.params.id });
   }
 

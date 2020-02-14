@@ -10,7 +10,8 @@ class LoginForm extends Component {
         this.state = {
             username: '',
             password: '',
-            redirectTo: null
+            redirectTo: null,
+            id: null
         }
         this.handleSubmit = this.handleSubmit.bind(this)
         this.handleChange = this.handleChange.bind(this)
@@ -29,13 +30,15 @@ class LoginForm extends Component {
 
                 this.setState({
                     loggedIn: true,
-                    username: response.data.user.username
+                    username: response.data.user.username,
+                    id: response.data.user._id
                 })
             } else {
                 console.log('Get user: no user');
                 this.setState({
                     loggedIn: false,
-                    username: null
+                    username: null,
+                    id: null
                 })
             }
         })
@@ -64,7 +67,8 @@ class LoginForm extends Component {
                     // update App.js state
                     this.props.updateUser({
                         loggedIn: true,
-                        username: response.data.username
+                        username: response.data.username,
+                        id: response.data.userid
                     })
                     // update the state to redirect to home
                     this.setState({

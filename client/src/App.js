@@ -15,7 +15,8 @@ class App extends Component {
     super()
     this.state = {
       loggedIn: false,
-      username: null
+      username: null,
+      id: null
     }
 
     this.getUser = this.getUser.bind(this)
@@ -56,7 +57,7 @@ class App extends Component {
     return (
       <Router>
         <div>
-          <Nav updateUser={this.updateUser} loggedIn={this.state.loggedIn} />
+          <Nav updateUser={this.updateUser} loggedIn={this.state.loggedIn} userid={this.state.id}/>
           {/* greet user if logged in: */}
           {this.state.loggedIn &&
             <span>Welcome to Travelogue, {this.state.username}!</span>

@@ -34,6 +34,10 @@ class Nav extends Component {
 
   render() {
     const loggedIn = this.props.loggedIn;
+    const userid = this.props.userid;
+    console.log("Nav user id: " + userid);
+    var createJournalLink = '/CreateJournal/' + userid;
+
     console.log('navbar render, props: ')
     console.log(this.props);
     // if (this.state.loggedOut) {
@@ -50,7 +54,7 @@ class Nav extends Component {
             <section className="navbar-section justify-content-end">
               <Link to="/" className="btn btn-link text-secondary" onClick={this.logout}>
                 <span className="text-light">Logout</span></Link>
-              <Link to="/" className="btn btn-link text-secondary">
+              <Link to={createJournalLink} className="btn btn-link text-secondary">
                 <span className="text-light">Create New Journal</span>
               </Link>
 

@@ -39,7 +39,8 @@ class Nav extends Component {
     var createJournalLink = '/CreateJournal/' + userid;
 
     console.log('navbar render, props: ')
-    console.log(this.props);
+    console.log(userid);
+    console.log("URL for Create Journal: " + createJournalLink);
     // if (this.state.loggedOut) {
     //   return <Redirect to={{ pathname: '/' }} />
     // }

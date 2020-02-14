@@ -23,7 +23,9 @@ class Nav extends Component {
           loggedIn: false,
           username: null
         })
-        this.setState({ loggedOut: true })
+        this.setState({ loggedOut: true }, () => {
+          this.setState({ loggedOut: false })
+        })
       }
     }).catch(error => {
       console.log('Logout error')
@@ -43,7 +45,7 @@ class Nav extends Component {
       <div>
         {this.state.loggedOut && <Redirect to={{ pathname: '/' }} />}
         <nav className="navbar fixed-top navbar-expand-lg navbar-dark bg-primary justify-content-between">
-          <a class="navbar-brand" href="#">Travelogue</a>
+          <a className="navbar-brand" href="#">Travelogue</a>
           {loggedIn ? (
             <section className="navbar-section justify-content-end">
               <Link to="/" className="btn btn-link text-secondary" onClick={this.logout}>

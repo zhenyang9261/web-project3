@@ -8,7 +8,7 @@ function NewUser() {
       <Row>
         <Col size="md-12">
           <Jumbotron>
-            <h1>Welcome!</h1>
+
           </Jumbotron>
         </Col>
       </Row>

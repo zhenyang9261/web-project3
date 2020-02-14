@@ -15,12 +15,13 @@ class PersonalJournal extends Component {
   componentDidMount() {
     this.state.userId = this.props.match.params.id;
     API.getUserJournals(this.props.match.params.id)
-    .then(res => {this.setState({ journals: res.data.journal}); })
-    .catch(err => console.log(err));
+      .then(res => { this.setState({ journals: res.data.journal }); })
+      .catch(err => console.log(err));
   }
 
   render() {
-    let newJournalLink = "/CreateJournal/"+this.state.userId;
+    let newJournalLink = "/CreateJournal/" + this.state.userId;
+    console.log(newJournalLink);
 
     return (
       <Container fluid>
@@ -56,13 +57,13 @@ class PersonalJournal extends Component {
               <List>
                 {this.state.journals.map(journal => (
                   <ListItem key={journal._id}>
-                   
-                      <strong>
-                        <h2>{journal.title}</h2> 
-                      </strong>
-                      <p>{journal.country} | {journal.city} | {journal.date.substring(0, 10)}</p>
-                      <p><strong>Rating: </strong>{journal.rating}</p>
-                      <p>{journal.note}</p>
+
+                    <strong>
+                      <h2>{journal.title}</h2>
+                    </strong>
+                    <p>{journal.country} | {journal.city} | {journal.date.substring(0, 10)}</p>
+                    <p><strong>Rating: </strong>{journal.rating}</p>
+                    <p>{journal.note}</p>
                   </ListItem>
                 ))}
               </List>

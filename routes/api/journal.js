@@ -8,7 +8,7 @@ router
   .get(journalController.findAll)
   .post(journalController.create);
 
-// Matches with "/api/books/:id"
+// Matches with "/api/journals/:id"
 router
   .route("/:id")
   .get(journalController.findById)

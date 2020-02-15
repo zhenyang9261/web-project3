@@ -50,11 +50,11 @@ class Nav extends Component {
           <a className="navbar-brand" href="#">Travelogue</a>
           {loggedIn ? (
             <section className="navbar-section justify-content-end">
+              <Link to={createJournalLink} className="btn btn-link text-secondary">
+                <span className="text-light">Create New Journal</span></Link>
               <Link to="/" className="btn btn-link text-secondary" onClick={this.logout}>
                 <span className="text-light">Logout</span></Link>
-              <Link to={createJournalLink} className="btn btn-link text-secondary">
-                <span className="text-light">Create New Journal</span>
-              </Link>
+              
 
             </section>
           ) : (

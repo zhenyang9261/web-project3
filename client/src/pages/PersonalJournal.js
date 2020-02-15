@@ -3,7 +3,7 @@ import { Col, Row, Container } from "../components/Grid";
 import Jumbotron from "../components/Jumbotron";
 // import Nav from "../components/Nav";
 import { List, ListItem } from "../components/List";
-import { DeleteBtn } from "../components/DeleteBtn";
+import DeleteBtn from "../components/DeleteBtn";
 import API from "../utils/API";
 
 class PersonalJournal extends Component {
@@ -14,11 +14,21 @@ class PersonalJournal extends Component {
   // When this component mounts, grab the journals with the _id of this.props.match.params.id
   // e.g. localhost:3000/PersonalJournals/599dcb67f0f16317844583fc
   componentDidMount() {
-    this.state.userId = this.props.match.params.id;
-    API.getUserJournals(this.props.match.params.id)
+    this.setState({userId: this.props.match.params.id});
+    this.loadJournal(this.props.match.params.id);    
+  }
+
+  loadJournal = id => {
+    API.getUserJournals(id)
       .then(res => { this.setState({ journals: res.data.journal }); })
       .catch(err => console.log(err));
   }
+
+  deleteJournal = id => {
+    API.deleteJournal(id)
+      .then(res => this.loadJournal(this.state.userId))
+      .catch(err => console.log(err));
+  };
 
   render() {
     let newJournalLink = "/CreateJournal/" + this.state.userId;
@@ -49,6 +59,7 @@ class PersonalJournal extends Component {
                     <p>{journal.country} | {journal.city} | {journal.date.substring(0, 10)}</p>
                     <p><strong>Rating: </strong>{journal.rating}</p>
                     <p>{journal.note}</p>
+                    <DeleteBtn onClick={() => this.deleteJournal(journal._id)} />
                   </ListItem>
                 ))}
               </List>

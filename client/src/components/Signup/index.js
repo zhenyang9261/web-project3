@@ -3,6 +3,8 @@ import { Redirect } from 'react-router-dom'
 import axios from 'axios'
 import Nav from "../Nav";
 import { Container } from "../Grid";
+import Modal from 'react-bootstrap/Modal'
+import Button from 'react-bootstrap/Button'
 
 class Signup extends Component {
 	constructor() {
@@ -32,7 +34,7 @@ class Signup extends Component {
 			password: this.state.password
 		})
 			.then(response => {
-				console.log(response)
+				console.log(response.data);
 				if (!response.data.error) {
 					console.log('successful signup')
 					console.log('this works')
@@ -40,8 +42,9 @@ class Signup extends Component {
 						redirectTo: '/Login'
 					})
 				} else {
-					console.log('username already taken')
-					alert("Please choose another username")
+					console.log('username already taken');
+					alert("Username already exists, please choose a different username.");
+
 				}
 			}).catch(error => {
 				console.log('signup error: ')
@@ -115,6 +118,20 @@ class Signup extends Component {
 								</div>
 							</form>
 						</div>
+						<Modal.Dialog>
+							<Modal.Header closeButton>
+								<Modal.Title>Modal title</Modal.Title>
+							</Modal.Header>
+
+							<Modal.Body>
+								<p>Modal body text goes here.</p>
+							</Modal.Body>
+
+							<Modal.Footer>
+								<Button variant="secondary">Close</Button>
+								<Button variant="primary">Save changes</Button>
+							</Modal.Footer>
+						</Modal.Dialog>
 					</Container >
 				</div>
 			)

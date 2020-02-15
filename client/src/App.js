@@ -35,10 +35,8 @@ class App extends Component {
 
   getUser() {
     axios.get('/user/').then(response => {
-      console.log('Get user response: ')
-      console.log(response.data)
+      
       if (response.data.user) {
-        console.log('Get User: There is a user saved in the server session: ' + response.data.user._id);
 
         this.setState({
           loggedIn: true,
@@ -46,7 +44,7 @@ class App extends Component {
           id: response.data.user._id
         })
       } else {
-        console.log('Get user: no user');
+        
         this.setState({
           loggedIn: false,
           username: null
@@ -57,7 +55,7 @@ class App extends Component {
   render() {
 
     var createJournalLink = '/CreateJournal/' + this.state.id;
-    console.log(createJournalLink);
+    
     return (
       <Router>
         <div>

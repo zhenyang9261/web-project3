@@ -23,8 +23,7 @@ class LoginForm extends Component {
     }
     getUser() {
         axios.get('/user/').then(response => {
-            console.log('Get user response: ')
-            console.log(response.data)
+           
             if (response.data.user) {
                 console.log('Get User: There is a user saved in the server session: ')
 
@@ -52,7 +51,6 @@ class LoginForm extends Component {
 
     handleSubmit(event) {
         event.preventDefault()
-        console.log('handleSubmit')
 
         axios
             .post('api/user/login', {
@@ -60,10 +58,9 @@ class LoginForm extends Component {
                 password: this.state.password
             })
             .then(response => {
-                console.log('login response: ')
-                console.log(response.data.userid)
+               
                 if (response.status === 200) {
-                    console.log("Login Retrieved");
+                    
                     // update App.js state
                     this.props.updateUser({
                         loggedIn: true,
@@ -90,21 +87,7 @@ class LoginForm extends Component {
             return (
                 <div>
                     <Container fluid>
-                        {/* <Nav>
-                            <div className="collapse navbar-collapse" id="navbarNav">
-                                <ul className="navbar-nav ml-auto">
-                                    <li className="nav-item active">
-                                        <a className="nav-link" href="/">Home <span className="sr-only">(current)</span></a>
-                                    </li>
-                                    <li className="nav-item">
-                                        <a className="nav-link" href="#">Login</a>
-                                    </li>
-                                    <li className="nav-item">
-                                        <a className="nav-link" href="/Signup">Signup</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </Nav> */}
+                      
                         <div className="card">
                             <div className="card-header">
                                 Login </div>

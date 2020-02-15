@@ -22,8 +22,7 @@ class Signup extends Component {
 		})
 	}
 	handleSubmit(event) {
-		console.log('sign-up handleSubmit, username: ')
-		console.log("This is here: " + this.state.username)
+		
 		event.preventDefault()
 
 		//request to server to add a new username/password
@@ -34,8 +33,7 @@ class Signup extends Component {
 			.then(response => {
 				console.log(response)
 				if (!response.data.errmsg) {
-					console.log('successful signup')
-					console.log('this works')
+					
 					this.setState({ //redirect to login page
 						redirectTo: '/Login'
 					})
@@ -57,21 +55,7 @@ class Signup extends Component {
 			return (
 				<div>
 					<Container fluid>
-						{/* <Nav>
-							<div className="collapse navbar-collapse" id="navbarNav">
-								<ul className="navbar-nav ml-auto">
-									<li className="nav-item active">
-										<a className="nav-link" href="/">Home <span className="sr-only">(current)</span></a>
-									</li>
-									<li className="nav-item">
-										<a className="nav-link" href="/Login">Login</a>
-									</li>
-									<li className="nav-item">
-										<a className="nav-link" href="#">Signup</a>
-									</li>
-								</ul>
-							</div>
-						</Nav> */}
+						
 						<div className="SignupForm">
 							<h4>Sign up</h4>
 							<form className="form-horizontal">

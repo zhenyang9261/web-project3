@@ -9,7 +9,7 @@ router.post('/', (req, res) => {
     console.log('user signup' + req.body);
 
     const { username, password } = req.body
-    console.log(req.body);
+    
     // ADD VALIDATION
     User.findOne({ username: username }, (err, user) => {
         if (err) {
@@ -20,7 +20,7 @@ router.post('/', (req, res) => {
             })
         }
         else {
-            console.log('this is here')
+            
             const newUser = new User({
                 username: username,
                 password: password
@@ -36,26 +36,24 @@ router.post('/', (req, res) => {
 router.post(
     '/login',
     function (req, res, next) {
-        console.log('routes/user.js, login, req.body: ');
-        console.log(req.body)
+        
         next()
     },
     passport.authenticate('local'),
     (req, res) => {
-        console.log('logged in', req.user._id);
+        
         var userInfo = {
             username: req.user.username,
             userid: req.user._id
         };
         res.send(userInfo);
-        console.log(userInfo);
+        
         // res.render("/PersonalJournal/" + userInfo.userid);
     }
 )
 
 router.get('/', (req, res, next) => {
-    console.log('===== user!!======')
-    console.log(req.user)
+    
     if (req.user) {
         res.json({ user: req.user });
         res.render("/PersonalJournal/" + userInfo.userid);
@@ -65,7 +63,7 @@ router.get('/', (req, res, next) => {
 })
 
 router.post('/logout', (req, res) => {
-    console.log("test here");
+    
     if (req.user) {
         req.logout()
 

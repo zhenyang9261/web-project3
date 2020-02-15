@@ -23,7 +23,7 @@ class CreateJournal extends Component {
   // When this component mounts, grab the journals with the _id of this.props.match.params.id
   // e.g. localhost:3000/PersonalJournals/599dcb67f0f16317844583fc
   componentDidMount() {
-      console.log("createjournal userid from url: " + JSON.stringify(this.props.match.params));
+      
     this.setState({ userId: this.props.match.params.id });
   }
 
@@ -45,7 +45,6 @@ class CreateJournal extends Component {
   handleFormSubmit = event => {
     event.preventDefault();
 
-    console.log("Input: " + this.state.title + " " + this.state.country + " " + this.state.city + " " + this.state.date + " " + this.state.rating + " " + this.state.publish);
     if (this.state.title && this.state.date && this.state.city && this.state.date) {
       API.saveJournal({
         title: this.state.title,
@@ -73,12 +72,7 @@ class CreateJournal extends Component {
         <Nav>
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav ml-auto">
-              {/* <li className="nav-item active">
-                <a className="nav-link" href="#">Home <span className="sr-only">(current)</span></a>
-              </li> */}
-              {/* <li className="nav-item">
-                <a className="nav-link" href="#">Create New Journal</a>
-              </li> */}
+              
               <li className="nav-item">
                 <a className="nav-link" href="/">Logout</a>
               </li>

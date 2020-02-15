@@ -20,8 +20,7 @@ class Home extends Component {
   loadJournals = () => {
     API.getJournals()
       .then(res => {
-        console.log("res.data");
-
+        
         this.setState({ journals: res.data })
       }
       )
@@ -33,7 +32,6 @@ class Home extends Component {
     this.loadJournals() :
     API.getJournalRating(rate)
       .then(res => {
-        console.log("res.data");
      
         this.setState({ journals: res.data })
       }
@@ -44,21 +42,7 @@ class Home extends Component {
   render() {
     return (
       <Container fluid>
-        {/* <Nav>
-          <div className="collapse navbar-collapse" id="navbarNav">
-            <ul className="navbar-nav ml-auto">
-              <li className="nav-item active">
-                <a className="nav-link" href="/">Home <span className="sr-only">(current)</span></a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="/Login">Login</a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="/Signup">Signup</a>
-              </li>
-            </ul>
-          </div>
-        </Nav> */}
+       
         <Row>
           <Col size="md-12 sm-12">
             <Jumbotron>

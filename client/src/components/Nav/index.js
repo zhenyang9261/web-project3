@@ -15,7 +15,7 @@ class Nav extends Component {
 
   logout(event) {
     event.preventDefault()
-    console.log('logging out')
+    
     axios.post('/api/user/logout').then(response => {
       console.log(response.data)
       if (response.status === 200) {
@@ -35,12 +35,9 @@ class Nav extends Component {
   render() {
     const loggedIn = this.props.loggedIn;
     const userid = this.props.userid;
-    console.log("Nav user id: " + userid);
+   
     var createJournalLink = '/CreateJournal/' + userid;
 
-    console.log('navbar render, props: ')
-    console.log(userid);
-    console.log("URL for Create Journal: " + createJournalLink);
     // if (this.state.loggedOut) {
     //   return <Redirect to={{ pathname: '/' }} />
     // }
@@ -81,19 +78,5 @@ class Nav extends Component {
 
   }
 }
-
-// function Nav({ children }) {
-//   return (
-//     <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
-//       <a className="navbar-brand" href="/">
-//         Travelogue
-//       </a>
-//       <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-//         <span className="navbar-toggler-icon"></span>
-//       </button>
-//       {children}
-//     </nav>
-//   );
-// }
 
 export default Nav;

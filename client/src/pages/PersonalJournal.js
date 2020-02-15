@@ -21,31 +21,15 @@ class PersonalJournal extends Component {
 
   render() {
     let newJournalLink = "/CreateJournal/" + this.state.userId;
-    console.log(newJournalLink);
 
     return (
       <Container fluid>
 
-        {/* <Nav>
-          <div className="collapse navbar-collapse" id="navbarNav">
-            <ul className="navbar-nav ml-auto"> */}
-        {/* <li className="nav-item active">
-                <a className="nav-link" href="#">Home <span className="sr-only">(current)</span></a>
-              </li> */}
-        {/* <li className="nav-item">
-                <a className="nav-link" href="#">Create New Journal</a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="/">Logout</a>
-              </li>
-            </ul>
-          </div>
-        </Nav> */}
         <Row>
           <Col size="md-12">
             <Jumbotron>
               <h1>
-                {/* {this.state.journal.title} by {this.state.book.author} */}
+               
                 Personal Journals
               </h1>
             </Jumbotron>

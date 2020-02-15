@@ -15,7 +15,7 @@ class Nav extends Component {
 
   logout(event) {
     event.preventDefault()
-    
+
     axios.post('/api/user/logout').then(response => {
       console.log(response.data)
       if (response.status === 200) {
@@ -35,7 +35,7 @@ class Nav extends Component {
   render() {
     const loggedIn = this.props.loggedIn;
     const userid = this.props.userid;
-   
+
     var createJournalLink = '/CreateJournal/' + userid;
 
     // if (this.state.loggedOut) {
@@ -53,7 +53,7 @@ class Nav extends Component {
               <Link to="/" className="btn btn-link text-secondary" onClick={this.logout}>
                 <span className="text-light">Logout</span></Link>
               <Link to={createJournalLink} className="btn btn-link text-secondary">
-                <span className="text-light">Create New Journal</span>
+                <span className="text-light" onClick={this.loggedIn}>Create New Journal</span>
               </Link>
 
             </section>

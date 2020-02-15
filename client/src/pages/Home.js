@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-// import DeleteBtn from "../components/DeleteBtn";
+import DeleteBtn from "../components/DeleteBtn";
 import Jumbotron from "../components/Jumbotron";
 import API from "../utils/API";
 // import { Link } from "react-router-dom";
@@ -20,7 +20,7 @@ class Home extends Component {
   loadJournals = () => {
     API.getJournals()
       .then(res => {
-        
+
         this.setState({ journals: res.data })
       }
       )
@@ -28,21 +28,21 @@ class Home extends Component {
   };
 
   rateSelected = (rate) => {
-    rate === 0 ? 
-    this.loadJournals() :
-    API.getJournalRating(rate)
-      .then(res => {
-     
-        this.setState({ journals: res.data })
-      }
-      )
-      .catch(err => console.log(err));
+    rate === 0 ?
+      this.loadJournals() :
+      API.getJournalRating(rate)
+        .then(res => {
+
+          this.setState({ journals: res.data })
+        }
+        )
+        .catch(err => console.log(err));
   };
 
   render() {
     return (
       <Container fluid>
-       
+
         <Row>
           <Col size="md-12 sm-12">
             <Jumbotron>

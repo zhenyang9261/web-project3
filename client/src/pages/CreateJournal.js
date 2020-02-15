@@ -23,14 +23,14 @@ class CreateJournal extends Component {
   // When this component mounts, grab the journals with the _id of this.props.match.params.id
   // e.g. localhost:3000/PersonalJournals/599dcb67f0f16317844583fc
   componentDidMount() {
-      
+
     this.setState({ userId: this.props.match.params.id });
   }
 
   handleInputChange = event => {
     const { name, value } = event.target;
     if (name === "publish") {
-      
+
       this.setState({
         publish: event.target.checked
       });
@@ -62,14 +62,14 @@ class CreateJournal extends Component {
   };
 
   render() {
-    
+
     if (this.state.done === true) {
       let newPage = "/PersonalJournal/" + this.state.userId;
       return <Redirect to={newPage} />;
     }
     return (
       <Container fluid>
-        <Nav>
+        {/* <Nav>
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav ml-auto">
               
@@ -78,7 +78,7 @@ class CreateJournal extends Component {
               </li>
             </ul>
           </div>
-        </Nav>
+        </Nav> */}
         <Row>
           <Col size="md-12">
             <Jumbotron>
@@ -90,7 +90,7 @@ class CreateJournal extends Component {
         </Row>
         <Row>
           <Col size="md-12">
-          <form>
+            <form>
               <Input
                 value={this.state.title}
                 onChange={this.handleInputChange}
@@ -121,13 +121,13 @@ class CreateJournal extends Component {
                 name="rating"
                 placeholder="Rating"
               />
-              Publish? { "  " }
+              Publish? {"  "}
               <input
                 type="checkbox"
                 defaultChecked={this.state.publish}
                 name="publish"
                 onChange={this.handleInputChange}
-              /> 
+              />
               <TextArea
                 value={this.state.note}
                 onChange={this.handleInputChange}
@@ -143,7 +143,7 @@ class CreateJournal extends Component {
             </form>
           </Col>
         </Row>
-        
+
       </Container>
     );
   }

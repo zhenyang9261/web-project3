@@ -9,6 +9,7 @@ import Signup from './components/Signup'
 import Nav from './components/Nav'
 import NoMatch from "./pages/NoMatch";
 import { Redirect } from 'react-router-dom'
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 class App extends Component {
   constructor() {
@@ -35,7 +36,7 @@ class App extends Component {
 
   getUser() {
     axios.get('/user/').then(response => {
-      
+
       if (response.data.user) {
 
         this.setState({
@@ -44,7 +45,7 @@ class App extends Component {
           id: response.data.user._id
         })
       } else {
-        
+
         this.setState({
           loggedIn: false,
           username: null
@@ -55,7 +56,7 @@ class App extends Component {
   render() {
 
     var createJournalLink = '/CreateJournal/' + this.state.id;
-    
+
     return (
       <Router>
         <div>

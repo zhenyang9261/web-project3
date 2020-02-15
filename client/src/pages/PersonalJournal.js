@@ -3,6 +3,7 @@ import { Col, Row, Container } from "../components/Grid";
 import Jumbotron from "../components/Jumbotron";
 // import Nav from "../components/Nav";
 import { List, ListItem } from "../components/List";
+import { DeleteBtn } from "../components/DeleteBtn";
 import API from "../utils/API";
 
 class PersonalJournal extends Component {

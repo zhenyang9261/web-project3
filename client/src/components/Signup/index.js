@@ -33,7 +33,7 @@ class Signup extends Component {
 		})
 			.then(response => {
 				console.log(response)
-				if (!response.data.errmsg) {
+				if (!response.data.error) {
 					console.log('successful signup')
 					console.log('this works')
 					this.setState({ //redirect to login page
@@ -41,6 +41,7 @@ class Signup extends Component {
 					})
 				} else {
 					console.log('username already taken')
+					alert("Please choose another username")
 				}
 			}).catch(error => {
 				console.log('signup error: ')

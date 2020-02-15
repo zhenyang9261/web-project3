@@ -11,18 +11,19 @@
     "seed": "node scripts/seedDB.js",
     "install": "cd client && npm install",
     "build": "cd client && npm run build",
-    "heroku-postbuild": "npm run build"
+    "heroku-postbuild": "npm run build",
+    "upload": "node upload.js",
+    "uploadDev": " nodemon upload.js"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "concurrently": "^4.1.0",
-    "nodemon": "^1.18.7"
+    "nodemon": "^1.19.4"
   },
   "dependencies": {
     "axios": "^0.18.0",
-    "express": "^4.16.3",
-    "mongoose": "^5.3.16",
+    "ejs": "^3.0.1",
     "if-env": "^1.0.4"
   }
 }

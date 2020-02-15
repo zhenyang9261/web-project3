@@ -53,15 +53,19 @@ class Signup extends Component {
 			return <Redirect to={{ pathname: this.state.redirectTo }} />
 		} else {
 			return (
-				<div>
-					<Container fluid>
-						
-						<div className="SignupForm">
-							<h4>Sign up</h4>
-							<form className="form-horizontal">
+                <div>
+                    <Container fluid>
+                      
+                        <div className="card">
+                            <div className="card-header">
+                                Login </div>
+                            <div className="card-body">
+                                <h4 className="card-title">Signup</h4>
+                                <p className="card-text"></p>
+								<form className="form-horizontal">
 								<div className="form-group">
 									<div className="col-1 col-ml-auto">
-										<label className="form-label" htmlFor="username">Username</label>
+										<label className="form-label" htmlFor="username">Username: </label>
 									</div>
 									<div className="col-3 col-mr-auto">
 										<input className="form-input"
@@ -97,6 +101,7 @@ class Signup extends Component {
 									>Sign up</button>
 								</div>
 							</form>
+						</div>
 						</div>
 					</Container >
 				</div>

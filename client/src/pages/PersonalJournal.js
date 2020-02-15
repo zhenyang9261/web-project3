@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import DeleteBtn from "../components/DeleteBtn";
 import { Col, Row, Container } from "../components/Grid";
 import Jumbotron from "../components/Jumbotron";
 // import Nav from "../components/Nav";
@@ -48,6 +49,7 @@ class PersonalJournal extends Component {
                     <p>{journal.country} | {journal.city} | {journal.date.substring(0, 10)}</p>
                     <p><strong>Rating: </strong>{journal.rating}</p>
                     <p>{journal.note}</p>
+                    <button className="btn btn-primary" type="DeleteBtn">Delete</button>
                   </ListItem>
                 ))}
               </List>

@@ -32,7 +32,7 @@ class Signup extends Component {
 		})
 			.then(response => {
 				console.log(response)
-				if (!response.data.errmsg) {
+				if (!response.data.errormsg) {
 					
 					this.setState({ //redirect to login page
 						redirectTo: '/Login'

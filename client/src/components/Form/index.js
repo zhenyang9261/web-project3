@@ -29,6 +29,7 @@ export function FormBtn(props) {
 export function FormSelect(props) {
   return (
     <select {...props} className="custom-select">
+      <option value="0">Rating 1-5 (required)</option>
       <option value="5">5</option>
       <option value="4">4</option>
       <option value="3">3</option>

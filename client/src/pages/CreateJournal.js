@@ -14,7 +14,7 @@ class CreateJournal extends Component {
     country: "",
     city: "",
     date: "",
-    rating: "5",
+    rating: "",
     publish: false,
     note: "",
     done: false
@@ -45,7 +45,7 @@ class CreateJournal extends Component {
   handleFormSubmit = event => {
     event.preventDefault();
 
-    if (this.state.title && this.state.date && this.state.city && this.state.date) {
+    if (this.state.title && this.state.date && this.state.city && this.state.date && this.state.rating != 0) {
       API.saveJournal({
         title: this.state.title,
         country: this.state.country,
@@ -106,7 +106,6 @@ class CreateJournal extends Component {
                 name="city"
                 placeholder="City (required)"
               />
-              Rating
               <FormSelect
                 value={this.state.rating}
                 onChange={this.handleInputChange}

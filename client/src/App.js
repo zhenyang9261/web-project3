@@ -29,7 +29,7 @@ class App extends Component {
   }
 
   updateUser(userObject) {
-    console.log("updateUser: " + JSON.stringify(userObject));
+    
     this.setState(userObject)
   }
 

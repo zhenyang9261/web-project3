@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Col, Row, Container } from "../components/Grid";
 import Jumbotron from "../components/Jumbotron";
 import Nav from "../components/Nav";
-import { Input, TextArea, FormBtn } from "../components/Form";
+import { Input, TextArea, FormBtn, FormSelect } from "../components/Form";
 import API from "../utils/API";
 import { Redirect } from 'react-router-dom';
 
@@ -14,7 +14,7 @@ class CreateJournal extends Component {
     country: "",
     city: "",
     date: "",
-    rating: "",
+    rating: "5",
     publish: false,
     note: "",
     done: false
@@ -92,7 +92,7 @@ class CreateJournal extends Component {
                 value={this.state.date}
                 onChange={this.handleInputChange}
                 name="date"
-                placeholder="Date (required)"
+                placeholder="Date yyyy-mm-dd (required)"
               />
               <Input
                 value={this.state.country}
@@ -106,12 +106,18 @@ class CreateJournal extends Component {
                 name="city"
                 placeholder="City (required)"
               />
-              <Input
+              Rating
+              <FormSelect
+                value={this.state.rating}
+                onChange={this.handleInputChange}
+                name="rating"
+              />
+              {/* <Input
                 value={this.state.rating}
                 onChange={this.handleInputChange}
                 name="rating"
                 placeholder="Rating"
-              />
+              /> */}
               Publish? { "  " }
               <input
                 type="checkbox"

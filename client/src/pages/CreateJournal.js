@@ -111,25 +111,21 @@ class CreateJournal extends Component {
                 onChange={this.handleInputChange}
                 name="rating"
               />
-              {/* <Input
-                value={this.state.rating}
-                onChange={this.handleInputChange}
-                name="rating"
-                placeholder="Rating"
-              /> */}
-              Publish? { "  " }
-              <input
-                type="checkbox"
-                defaultChecked={this.state.publish}
-                name="publish"
-                onChange={this.handleInputChange}
-              /> 
               <TextArea
                 value={this.state.note}
                 onChange={this.handleInputChange}
                 name="note"
                 placeholder="Note (Optional)"
               />
+              
+              <p className="font-weight-bolder mb-0.5 mt-0.5">Publish? { "    " } 
+              <input
+                type="checkbox"
+                defaultChecked={this.state.publish}
+                name="publish"
+                onChange={this.handleInputChange}
+              /> 
+              </p>
               <FormBtn
                 disabled={!(this.state.title && this.state.date && this.state.country && this.state.city)}
                 onClick={this.handleFormSubmit}

@@ -28,6 +28,7 @@ export function FormBtn(props) {
 
 export function FormSelect(props) {
   return (
+    <div className="form-group">
     <select {...props} className="custom-select">
       <option value="0">Rating 1-5 (required)</option>
       <option value="5">5</option>
@@ -36,5 +37,6 @@ export function FormSelect(props) {
       <option value="2">2</option>
       <option value="1">1</option>
     </select>
+    </div>
   );
 }

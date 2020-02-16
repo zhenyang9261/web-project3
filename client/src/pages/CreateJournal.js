@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import { Col, Row, Container } from "../components/Grid";
 import Jumbotron from "../components/Jumbotron";
-import Nav from "../components/Nav";
 import { Input, TextArea, FormBtn, FormSelect } from "../components/Form";
 import API from "../utils/API";
 import { Redirect } from 'react-router-dom';
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 class CreateJournal extends Component {
   state = {
@@ -13,7 +14,7 @@ class CreateJournal extends Component {
     title: "",
     country: "",
     city: "",
-    date: "",
+    date: new Date(),
     rating: "",
     publish: false,
     note: "",
@@ -27,8 +28,16 @@ class CreateJournal extends Component {
     this.setState({ userId: this.props.match.params.id });
   }
 
+  handleDateChange = date => {
+    console.log(date);
+    this.setState({
+      date: date
+    });
+  };
+
   handleInputChange = event => {
     const { name, value } = event.target;
+    
     if (name === "publish") {
       
       this.setState({
@@ -88,12 +97,15 @@ class CreateJournal extends Component {
                 name="title"
                 placeholder="Title (required)"
               />
-              <Input
-                value={this.state.date}
-                onChange={this.handleInputChange}
+              
+              <p className="font-weight-bolder mb-0.5 mt-0.5">Travel Date { "    " } 
+              <DatePicker
+                selected={this.state.date}
+                onChange={this.handleDateChange}
                 name="date"
-                placeholder="Date yyyy-mm-dd (required)"
               />
+              </p>
+              
               <Input
                 value={this.state.country}
                 onChange={this.handleInputChange}

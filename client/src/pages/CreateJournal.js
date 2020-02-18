@@ -98,13 +98,13 @@ class CreateJournal extends Component {
                 placeholder="Title (required)"
               />
               
-              <p className="font-weight-bolder mb-0.5 mt-0.5">Travel Date { "    " } 
+              <div className="font-weight-bolder mb-3 mt-2">Travel Date { "    " } 
               <DatePicker
                 selected={this.state.date}
                 onChange={this.handleDateChange}
                 name="date"
               />
-              </p>
+              </div>
               
               <Input
                 value={this.state.country}
@@ -130,14 +130,14 @@ class CreateJournal extends Component {
                 placeholder="Note (Optional)"
               />
               
-              <p className="font-weight-bolder mb-0.5 mt-0.5">Publish? { "    " } 
+              <div className="font-weight-bolder mb-3 mt-2">Publish? { "    " } 
               <input
                 type="checkbox"
                 defaultChecked={this.state.publish}
                 name="publish"
                 onChange={this.handleInputChange}
               /> 
-              </p>
+              </div>
               <FormBtn
                 disabled={!(this.state.title && this.state.date && this.state.country && this.state.city)}
                 onClick={this.handleFormSubmit}

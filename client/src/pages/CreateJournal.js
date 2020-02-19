@@ -51,6 +51,12 @@ class CreateJournal extends Component {
     }
   };
 
+  handleCancel = event => {
+    event.preventDefault();
+
+    this.setState({ done: true });
+  };
+
   handleFormSubmit = event => {
     event.preventDefault();
 
@@ -138,6 +144,12 @@ class CreateJournal extends Component {
                 onChange={this.handleInputChange}
               /> 
               </div>
+              
+              <FormBtn
+                onClick={this.handleCancel}
+              >
+                Cancel
+              </FormBtn>
               <FormBtn
                 disabled={!(this.state.title && this.state.date && this.state.country && this.state.city)}
                 onClick={this.handleFormSubmit}

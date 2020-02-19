@@ -4,11 +4,13 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Home from "./pages/Home";
 import PersonalJournal from "./pages/PersonalJournal";
 import CreateJournal from "./pages/CreateJournal";
-import LoginForm from './components/Login'
-import Signup from './components/Signup'
+import LoginForm from './pages/Login'
+import Signup from './pages/Signup'
 import Nav from './components/Nav'
 import NoMatch from "./pages/NoMatch";
 import { Redirect } from 'react-router-dom'
+import './App.css';
+import { Col, Row, Container } from "./components/Grid";
 
 class App extends Component {
   constructor() {
@@ -35,7 +37,7 @@ class App extends Component {
 
   getUser() {
     axios.get('/user/').then(response => {
-      
+
       if (response.data.user) {
 
         this.setState({
@@ -44,7 +46,7 @@ class App extends Component {
           id: response.data.user._id
         })
       } else {
-        
+
         this.setState({
           loggedIn: false,
           username: null
@@ -54,32 +56,37 @@ class App extends Component {
   }
   render() {
 
-    var createJournalLink = '/CreateJournal/' + this.state.id;
-    
+    // var createJournalLink = '/CreateJournal/' + this.state.id;
+
+
+
     return (
-      <Router>
-        <div>
-          <Nav updateUser={this.updateUser} loggedIn={this.state.loggedIn} userid={this.state.id} />
-          {/* greet user if logged in: */}
-          {this.state.loggedIn &&
-            <span>Welcome to Travelogue, {this.state.username}!</span>
-          }
-          <Switch>
-            <Route exact path="/" component={Home} />
-            <Route exact path="/Home" component={Home} />
-            <Route exact path="/Login" render={() =>
-              <LoginForm
-                updateUser={this.updateUser}
-              />} />
-            <Route exact path="/Logout" component={Home} />
-            <Route exact path="/Signup" component={Signup} />
-            <Route exact path="/PersonalJournal/:id" component={PersonalJournal} />
-            <Route exact path="/CreateJournal/:id" component={CreateJournal} />
-            {/* <Redirect from="/" to="/Home" /> */}
-            <Route component={NoMatch} />
-          </Switch>
-        </div>
-      </Router>
+      <Container fluid>
+        <Router>
+          <div className="App">
+            <Nav updateUser={this.updateUser} loggedIn={this.state.loggedIn} userid={this.state.id} />
+            {/* greet user if logged in: */}
+            {this.state.loggedIn &&
+              <span>Welcome to Travelogue, {this.state.username}!</span>
+            }
+            <Switch>
+              <Route exact path="/" component={Home} />
+              <Route exact path="/Home" component={Home} />
+              <Route exact path="/Login" render={() =>
+                <LoginForm
+                  updateUser={this.updateUser}
+                />} />
+              <Route exact path="/Logout" component={Home} />
+              <Route exact path="/Signup" render={() =>
+                <Signup />} />
+              <Route exact path="/PersonalJournal/:id" component={PersonalJournal} />
+              <Route exact path="/CreateJournal/:id" component={CreateJournal} />
+              {/* <Redirect from="/" to="/Home" /> */}
+              <Route component={NoMatch} />
+            </Switch>
+          </div>
+        </Router>
+      </Container>
     );
   }
 }

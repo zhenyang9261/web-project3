@@ -20,7 +20,7 @@ class Home extends Component {
   loadJournals = () => {
     API.getJournals()
       .then(res => {
-        
+
         this.setState({ journals: res.data })
       }
       )
@@ -28,21 +28,21 @@ class Home extends Component {
   };
 
   rateSelected = (rate) => {
-    rate === 0 ? 
-    this.loadJournals() :
-    API.getJournalRating(rate)
-      .then(res => {
-     
-        this.setState({ journals: res.data })
-      }
-      )
-      .catch(err => console.log(err));
+    rate === 0 ?
+      this.loadJournals() :
+      API.getJournalRating(rate)
+        .then(res => {
+
+          this.setState({ journals: res.data })
+        }
+        )
+        .catch(err => console.log(err));
   };
 
   render() {
     return (
       <Container fluid>
-       
+
         <Row>
           <Col size="md-12 sm-12">
             <Jumbotron>
@@ -58,7 +58,7 @@ class Home extends Component {
                       <h2>{journal.title}</h2>
                     </strong>
                     <p>{journal.country} | {journal.city}</p>
-                    <p><strong>Rating: </strong>{journal.rating}</p>
+                    <p className="rating"><strong>Rating: </strong>{journal.rating}</p>
                     <p>{journal.note}</p>
                   </ListItem>
                 ))}

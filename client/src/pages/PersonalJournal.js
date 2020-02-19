@@ -14,8 +14,8 @@ class PersonalJournal extends Component {
   // When this component mounts, grab the journals with the _id of this.props.match.params.id
   // e.g. localhost:3000/PersonalJournals/599dcb67f0f16317844583fc
   componentDidMount() {
-    this.setState({userId: this.props.match.params.id});
-    this.loadJournal(this.props.match.params.id);    
+    this.setState({ userId: this.props.match.params.id });
+    this.loadJournal(this.props.match.params.id);
   }
 
   loadJournal = id => {
@@ -40,7 +40,7 @@ class PersonalJournal extends Component {
           <Col size="md-12">
             <Jumbotron>
               <h1>
-               
+
                 Personal Journals
               </h1>
             </Jumbotron>
@@ -64,7 +64,10 @@ class PersonalJournal extends Component {
                 ))}
               </List>
             ) : (
-                <h3>No Results to Display</h3>
+                <div>
+                  <h3>No Results to Display</h3>
+                  <p>To create your first journal entry, use the link at the top to create your first journal.</p>
+                </div>
               )}
           </Col>
         </Row>

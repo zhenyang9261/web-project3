@@ -13,7 +13,7 @@ export function Input(props) {
 export function TextArea(props) {
   return (
     <div className="form-group">
-      <textarea className="form-control" rows="20" {...props} />
+      <textarea className="form-control" rows="8" {...props} />
     </div>
   );
 }
@@ -23,5 +23,20 @@ export function FormBtn(props) {
     <button {...props} style={{ float: "right", marginBottom: 10 }} className="btn btn-success">
       {props.children}
     </button>
+  );
+}
+
+export function FormSelect(props) {
+  return (
+    <div className="form-group">
+    <select {...props} className="custom-select">
+      <option value="0">Rating 1-5 (required)</option>
+      <option value="5">5</option>
+      <option value="4">4</option>
+      <option value="3">3</option>
+      <option value="2">2</option>
+      <option value="1">1</option>
+    </select>
+    </div>
   );
 }

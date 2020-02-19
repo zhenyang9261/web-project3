@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import { Col, Row, Container } from "../components/Grid";
 import Jumbotron from "../components/Jumbotron";
-import Nav from "../components/Nav";
-import { Input, TextArea, FormBtn } from "../components/Form";
+import { Input, TextArea, FormBtn, FormSelect } from "../components/Form";
 import API from "../utils/API";
 import { Redirect } from 'react-router-dom';
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 class CreateJournal extends Component {
   state = {
@@ -13,7 +14,7 @@ class CreateJournal extends Component {
     title: "",
     country: "",
     city: "",
-    date: "",
+    date: new Date(),
     rating: "",
     publish: false,
     note: "",
@@ -27,8 +28,16 @@ class CreateJournal extends Component {
     this.setState({ userId: this.props.match.params.id });
   }
 
+  handleDateChange = date => {
+    console.log(date);
+    this.setState({
+      date: date
+    });
+  };
+
   handleInputChange = event => {
     const { name, value } = event.target;
+    
     if (name === "publish") {
       
       this.setState({
@@ -45,7 +54,7 @@ class CreateJournal extends Component {
   handleFormSubmit = event => {
     event.preventDefault();
 
-    if (this.state.title && this.state.date && this.state.city && this.state.date) {
+    if (this.state.title && this.state.date && this.state.city && this.state.date && this.state.rating != 0) {
       API.saveJournal({
         title: this.state.title,
         country: this.state.country,
@@ -88,12 +97,15 @@ class CreateJournal extends Component {
                 name="title"
                 placeholder="Title (required)"
               />
-              <Input
-                value={this.state.date}
-                onChange={this.handleInputChange}
+              
+              <div className="font-weight-bolder mb-3 mt-2">Travel Date { "    " } 
+              <DatePicker
+                selected={this.state.date}
+                onChange={this.handleDateChange}
                 name="date"
-                placeholder="Date (required)"
               />
+              </div>
+              
               <Input
                 value={this.state.country}
                 onChange={this.handleInputChange}
@@ -106,25 +118,26 @@ class CreateJournal extends Component {
                 name="city"
                 placeholder="City (required)"
               />
-              <Input
+              <FormSelect
                 value={this.state.rating}
                 onChange={this.handleInputChange}
                 name="rating"
-                placeholder="Rating"
               />
-              Publish? { "  " }
-              <input
-                type="checkbox"
-                defaultChecked={this.state.publish}
-                name="publish"
-                onChange={this.handleInputChange}
-              /> 
               <TextArea
                 value={this.state.note}
                 onChange={this.handleInputChange}
                 name="note"
                 placeholder="Note (Optional)"
               />
+              
+              <div className="font-weight-bolder mb-3 mt-2">Publish? { "    " } 
+              <input
+                type="checkbox"
+                defaultChecked={this.state.publish}
+                name="publish"
+                onChange={this.handleInputChange}
+              /> 
+              </div>
               <FormBtn
                 disabled={!(this.state.title && this.state.date && this.state.country && this.state.city)}
                 onClick={this.handleFormSubmit}

@@ -1,0 +1,20 @@
+.card {
+  margin-bottom: 20px;
+}
+.card-title {
+  background-color: rgb(69, 69, 128);
+  padding: 20px;
+  color: whitesmoke;
+  text-align: center;
+}
+.btn.btn-primary {
+  background-color: rgb(69, 69, 128);
+}
+h2 {
+  color: rgb(69, 69, 128);
+  font-weight: bolder;
+  text-transform: capitalize;
+}
+p.rating {
+  color: rgb(119, 97, 172);
+}

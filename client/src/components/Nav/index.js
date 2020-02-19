@@ -15,7 +15,7 @@ class Nav extends Component {
 
   logout(event) {
     event.preventDefault()
-    
+
     axios.post('/api/user/logout').then(response => {
       console.log(response.data)
       if (response.status === 200) {
@@ -35,7 +35,7 @@ class Nav extends Component {
   render() {
     const loggedIn = this.props.loggedIn;
     const userid = this.props.userid;
-   
+
     var createJournalLink = '/CreateJournal/' + userid;
 
     // if (this.state.loggedOut) {
@@ -46,31 +46,33 @@ class Nav extends Component {
 
       <div>
         {this.state.loggedOut && <Redirect to={{ pathname: '/' }} />}
-        <nav className="navbar fixed-top navbar-expand-lg navbar-dark bg-primary justify-content-between">
-          <a className="navbar-brand" href="#">Travelogue</a>
-          {loggedIn ? (
-            <section className="navbar-section justify-content-end">
-              <Link to={createJournalLink} className="btn btn-link text-secondary">
-                <span className="text-light">Create New Journal</span></Link>
-              <Link to="/" className="btn btn-link text-secondary" onClick={this.logout}>
-                <span className="text-light">Logout</span></Link>
-              
-
-            </section>
-          ) : (
+        <div className="test">
+          <nav className="navbar fixed-top navbar-expand-lg navbar-dark bg-primary justify-content-between">
+            <a className="navbar-brand" href="#">Travelogue</a>
+            {loggedIn ? (
               <section className="navbar-section justify-content-end">
-                <Link to="/" className="btn btn-link text-secondary">
-                  <span className="text-light">Home</span>
-                </Link>
-                <Link to="/login" className="btn btn-link text-secondary">
-                  <span className="text-light">Login</span>
-                </Link>
-                <Link to="/signup" className="btn btn-link">
-                  <span className="text-light">Sign Up</span>
-                </Link>
+                <Link to={createJournalLink} className="btn btn-link text-secondary">
+                  <span className="text-light">Create New Journal</span></Link>
+                <Link to="/" className="btn btn-link text-secondary" onClick={this.logout}>
+                  <span className="text-light">Logout</span></Link>
+
+
               </section>
-            )}
-        </nav>
+            ) : (
+                <section className="navbar-section justify-content-end">
+                  <Link to="/" className="btn btn-link text-secondary">
+                    <span className="text-light">Home</span>
+                  </Link>
+                  <Link to="/login" className="btn btn-link text-secondary">
+                    <span className="text-light">Login</span>
+                  </Link>
+                  <Link to="/signup" className="btn btn-link">
+                    <span className="text-light">Sign Up</span>
+                  </Link>
+                </section>
+              )}
+          </nav>
+        </div>
       </div>
 
 

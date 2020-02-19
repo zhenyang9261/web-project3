@@ -1,17 +1,11 @@
 import React, { Component } from 'react'
 import { Col, Row, Container } from "../components/Grid";
 import Jumbotron from "../components/Jumbotron";
-// import Signup from "../components/Signup";
-
-
 import { Redirect } from 'react-router-dom'
 import axios from 'axios'
-// import Nav from "../Nav";
-// import { Container } from "../Grid";
-// import Modal from "react-bootstrap/Modal";
 import Modal from "../components/Modal";
 import './pages.css';
-import "bootstrap/dist/css/bootstrap.min.css";
+// import "bootstrap/dist/css/bootstrap.min.css";
 
 class Signup extends Component {
   constructor() {

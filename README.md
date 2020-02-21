@@ -13,7 +13,7 @@ Travelogue is an full stack web application that allows users to relive some of 
 
 **CSS Framework**: Bootstrap, React-Bootstrap
 
-**Node Modules**: axios, express, mongoose, react, passport, react-datepicker
+**Node Modules**: axios, bcrypt, express, mongoose, react, passport, react-datepicker
 
 
 ## To setup and run this app locally
